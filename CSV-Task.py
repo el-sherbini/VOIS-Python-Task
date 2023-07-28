@@ -7,13 +7,13 @@ data_frame = pd.read_csv(files_path + "/Employees.csv")
 # Remove any duplicates in the table
 data_without_duplicates = data_frame.drop_duplicates()
 
+# Remove any decimal places in the Age column
+data_without_duplicates['Age'] = data_without_duplicates['Age'].astype(int)
+
 # Convert the USD salary to EGP
 USD_to_EGP = 30.89
 data_without_duplicates = data_without_duplicates.copy()
 data_without_duplicates['Salary(EGP)'] = data_without_duplicates['Salary(USD)'] * USD_to_EGP
-
-# Remove any decimal places in the Age column
-data_without_duplicates['Age'] = data_without_duplicates['Age'].astype(int)
 
 # Print in the console some stats:
 
